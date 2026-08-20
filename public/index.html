@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Retry / Backoff Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Retry / Backoff Test</h1>
+    <p class="subtitle">
+      A learning prototype demonstrating retry with exponential backoff.
+    </p>
+
+    <form id="retry-form" class="config-form">
+      <div class="field">
+        <label for="failuresBeforeSuccess">Failures before success</label>
+        <input type="number" id="failuresBeforeSuccess" value="2" min="0" required />
+      </div>
+
+      <div class="field">
+        <label for="maxAttempts">Maximum attempts</label>
+        <input type="number" id="maxAttempts" value="4" min="1" required />
+      </div>
+
+      <div class="field">
+        <label for="baseDelay">Base delay (ms)</label>
+        <input type="number" id="baseDelay" value="1000" min="0" required />
+      </div>
+
+      <div class="field">
+        <label for="maxDelay">Maximum delay (ms)</label>
+        <input type="number" id="maxDelay" value="8000" min="0" required />
+      </div>
+
+      <button type="submit" id="run-button">Run Retry Test</button>
+    </form>
+
+    <div id="error-box" class="error-box hidden"></div>
+
+    <section id="log-section" class="log-section hidden">
+      <h2>Live Log</h2>
+      <div id="log" class="log"></div>
+
+      <div id="result-box" class="result-box hidden">
+        <h2>Result</h2>
+        <p id="result-text"></p>
+        <p id="attempts-text"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
